@@ -41,12 +41,14 @@ body {
     color: #000000;
     border-top: 1px dashed #000000;
     width: 80px;
+    font-size: 20px;
+    text-align: center;
+    padding: 25px 0;
   }
   
   .past {
     background-color: #d3d3d3;
     color: white;
-    width: 50%;
   }
   
   .present {
@@ -67,6 +69,12 @@ body {
     color: white;
     width: 80px;
   }
+
+ .fa-save {
+    padding-left: 27px;
+    padding-top: 30px;
+    color: #000000;
+ }
   
   .saveBtn i:hover {
     font-size: 20px;
