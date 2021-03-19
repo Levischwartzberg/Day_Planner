@@ -15,7 +15,7 @@ body {
   
   .jumbotron {
     text-align: center;
-    background-color: transparent;
+    background-image: linear-gradient(#0b3566, #4563a3);
     color: black;
     border-radius: 0;
     border-bottom: 10px solid black;
@@ -48,17 +48,17 @@ body {
   
   .past {
     background-image: linear-gradient(#6f7074, #939497);
-    color: white;
+    color: black;
   }
   
   .present {
     background-image: linear-gradient(#700707, #850f0f);
-    color: white;
+    color: black;
   }
   
   .future {
     background-image: linear-gradient(#084618, #0e5a1e);
-    color: white;
+    color: black;
   }
   
   .saveBtn {
@@ -95,3 +95,6 @@ body {
     transition: all .3s ease-in-out;
   }
   
+  footer {
+    height: 40px;
+  }

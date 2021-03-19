@@ -53,6 +53,7 @@ function saveText(event) {
     textStorage[index] = saved;
     
     $(this).parent().children().eq(2).attr("class", "saveBtn");
+    $(this).parent().children().eq(2).children().attr("class", "fas fa-save");
         //console.log(save);
         //console.log(textStorage);
     localStorage.setItem("hour_planner", JSON.stringify(textStorage));
@@ -64,4 +65,5 @@ containerEl.on("input", "#plans", changeButton);
 //changes button class when changes are unsaved to show a light change in save button color
 function changeButton(event) {
     $(this).parent().children().eq(2).attr("class", "altered ");
+    $(this).parent().children().eq(2).children().attr("class", "far fa-save");
 }
