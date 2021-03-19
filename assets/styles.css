@@ -52,12 +52,12 @@ body {
   }
   
   .present {
-    background-image: linear-gradient(#700707, #850f0f);
+    background-image: linear-gradient(#a00f0f, #c72c2c);
     color: black;
   }
   
   .future {
-    background-image: linear-gradient(#084618, #0e5a1e);
+    background-image: linear-gradient(#11752a, #1c9c38);
     color: black;
   }
   
