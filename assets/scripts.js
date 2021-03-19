@@ -4,7 +4,10 @@ day.text(today);
 
 var times = [["8AM", 8], ["9AM", 9], ["10AM", 10], ["11AM", 11], ["12PM", 12], ["1PM", 13], ["2PM", 14], ["3PM", 15], ["4PM", 16], ["5PM", 17]];
 var containerEl = $(".container");
-var textStorage = [];
+var textStorage = JSON.parse(localStorage.getItem("hour_planner"));
+if (textStorage == null) {
+    textStorage = [];
+}
 
 for (i=0; i<times.length; i++) {
     var currentHour = moment().format('HH');
@@ -12,16 +15,16 @@ for (i=0; i<times.length; i++) {
     
     //currentHour = convertTime(currentTime);
     if (currentHour > parseInt(times[i][1])) {
-        var contentText = $(`<textarea type="text" class="textarea past col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`); 
-        //console.log(times[i][1] + " " + currentHour);
+        var contentText = $(`<textarea type="text" class="textarea past col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`);
+        contentText.text(textStorage[i]);
     }
     else if (currentHour < parseInt(times[i][1])) {
-        var contentText = $(`<textarea type="text" class="textarea future col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`); 
-        //console.log(times[i][1] + " " + currentHour);
+        var contentText = $(`<textarea type="text" class="textarea future col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`);
+        contentText.text(textStorage[i]);
     }
     else if (currentHour == parseInt(times[i][1])) {
         var contentText = $(`<textarea type="text" class="textarea present col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`); 
-        //console.log(times[i][1] + " " + currentHour);
+        contentText.text(textStorage[i]);
     }
 
     var hour = $(`<div class="hour"> ${times[i][0]} </div>`);
@@ -43,7 +46,8 @@ function saveText(event) {
     var index = $(this).parent().children().eq(1).attr("index");
     //console.log(index);
     textStorage[index] = saved;
-    console.log(textStorage);
+    //console.log(textStorage);
+    localStorage.setItem("hour_planner", JSON.stringify(textStorage));
 }
 
 // function convertTime(time) {
