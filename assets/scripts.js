@@ -4,7 +4,7 @@ day.text(today);
 
 var containerEl = $(".container");
 //times array is used to initialize document
-var times = ["8AM","9AM","10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
+var times = [["8AM", 8], ["9AM", 9], ["10AM", 10], ["11AM", 11], ["12PM", 12], ["1PM", 13], ["2PM", 14], ["3PM", 15], ["4PM", 16], ["5PM", 17]];
 
 //local storage pulls from local storage if it's populated, otherwise it sets it to an empty array that will be populated
 var textStorage = JSON.parse(localStorage.getItem("hour_planner"));
@@ -17,20 +17,20 @@ for (i=0; i<times.length; i++) {
     var currentHour = moment().format('HH');
     
     //logic uses moment time to determine the class of the divs to influence the color
-    if (currentHour > parseInt(times[i])) {
+    if (currentHour > parseInt(times[i][1])) {
         var contentText = $(`<textarea type="text" class="textarea past col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`);
         contentText.text(textStorage[i]);
     }
-    else if (currentHour < parseInt(times[i])) {
+    else if (currentHour < parseInt(times[i][1])) {
         var contentText = $(`<textarea type="text" class="textarea future col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`);
         contentText.text(textStorage[i]);
     }
-    else if (currentHour == parseInt(times[i])) {
+    else if (currentHour == parseInt(times[i][1])) {
         var contentText = $(`<textarea type="text" class="textarea present col-6 col-md-8" index="${i}" id="plans" name="plans" placeholder="" />`); 
         contentText.text(textStorage[i]);
     }
 
-    var hour = $(`<div class="hour"> ${times[i]} </div>`);
+    var hour = $(`<div class="hour"> ${times[i][0]} </div>`);
     var saveButton = $(`<div class="saveBtn"> <i class="fas fa-save"> </div>`);
 
     var row = $(`<div class="row justify-content-center"> </div>`);
