@@ -34,7 +34,6 @@ for (i=0; i<times.length; i++) {
     var saveButton = $(`<div class="saveBtn"> <i class="fas fa-save"> </div>`);
 
     var row = $(`<div class="row justify-content-center"> </div>`);
-    var timeBlock = $(`<div class="time-block"> </div>`);
     row.append(hour);
     row.append(contentText);
     row.append(saveButton);
@@ -43,14 +42,26 @@ for (i=0; i<times.length; i++) {
 
 //event listener for all save buttons
 containerEl.on("click", ".saveBtn", saveText);
+containerEl.on("click", ".altered", saveText);
 
 //function called on save button click grabs the index and text value from the specific field and adds it to the text storage array
 function saveText(event) {
     var saved = ( $(this).parent().children().eq(1) ).val();
-    //console.log(saved);
+        //console.log(saved);
     var index = $(this).parent().children().eq(1).attr("index");
-    //console.log(index);
+        //console.log(index);
     textStorage[index] = saved;
-    //console.log(textStorage);
+    
+    $(this).parent().children().eq(2).attr("class", "saveBtn");
+        //console.log(save);
+        //console.log(textStorage);
     localStorage.setItem("hour_planner", JSON.stringify(textStorage));
+}
+
+//adds event listener to the text being edited
+containerEl.on("input", "#plans", changeButton);
+
+//changes button class when changes are unsaved to show a light change in save button color
+function changeButton(event) {
+    $(this).parent().children().eq(2).attr("class", "altered ");
 }
